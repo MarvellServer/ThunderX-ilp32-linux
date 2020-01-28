@@ -96,6 +96,9 @@ void arch_release_task_struct(struct task_struct *tsk);
 #define _TIF_SVE		(1 << TIF_SVE)
 #define _TIF_ILP32		(1 << TIF_ILP32)
 
+#define test_thread_flag_32bit() (test_thread_flag(TIF_32BIT) || test_thread_flag(TIF_ILP32))
+#define test_tsk_thread_flag_32bit(tsk) (test_tsk_thread_flag(tsk, TIF_32BIT) || test_tsk_thread_flag(tsk, TIF_ILP32))
+
 #define _TIF_WORK_MASK		(_TIF_NEED_RESCHED | _TIF_SIGPENDING | \
 				 _TIF_NOTIFY_RESUME | _TIF_FOREIGN_FPSTATE | \
 				 _TIF_UPROBE | _TIF_FSCHECK)
